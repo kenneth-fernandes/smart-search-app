@@ -8,11 +8,11 @@
 		<version>3.3.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.smartserachapp</groupId>
-	<artifactId>backend</artifactId>
+	<groupId>com.smartsearchapp</groupId>
+	<artifactId>smartsearchapp</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Smart Search</name>
-	<description>Backend for Smart Search App</description>
+	<description>Backend for Smart Search Application</description>
 	<url/>
 	<licenses>
 		<license/>

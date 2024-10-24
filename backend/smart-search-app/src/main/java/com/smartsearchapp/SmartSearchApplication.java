@@ -1,4 +1,4 @@
-package com.smartserachapp;
+package com.smartsearchapp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
