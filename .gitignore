@@ -7,3 +7,4 @@ backend/target
 # Ignore Amplify artifacts (if used)
 amplify/.awscloudbackend
 amplify/backend/amplify-meta.json
+.DS_Store
