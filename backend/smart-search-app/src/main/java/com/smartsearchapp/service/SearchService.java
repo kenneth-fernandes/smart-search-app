@@ -2,6 +2,7 @@ package com.smartsearchapp.service;
 
 import com.smartsearchapp.model.KnowledgeBaseRecord;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import software.amazon.awssdk.services.dynamodb.DynamoDbClient;
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue;
 import software.amazon.awssdk.services.dynamodb.model.ScanRequest;
@@ -37,6 +38,36 @@ public class SearchService {
         });
 
         return matchingRecords;
+    }
+
+    public List<KnowledgeBaseRecord> searchByMultipleKeywords(List<String> keywords) {
+        List<String> lowerCaseKeywords = keywords.stream()
+                .map(String::toLowerCase)
+                .filter(StringUtils::hasText)
+                .toList();
+
+        ScanRequest scanRequest = ScanRequest.builder().tableName("KnowledgeBase").build();
+
+        ScanResponse scanResponse = dynamoDbClient.scan(scanRequest);
+
+        List<KnowledgeBaseRecord> matchingRecords = new ArrayList<>();
+
+        scanResponse.items().forEach(item -> {
+            if (isAnyKeywordMatch(item, lowerCaseKeywords)) {
+                matchingRecords.add(KnowledgeBaseRecord.fromDynamoDB(item));
+            }
+        });
+
+        return matchingRecords;
+    }
+
+    private boolean isAnyKeywordMatch(Map<String, AttributeValue> item, List<String> keywords) {
+        for (String keyword : keywords) {
+            if (isKeywordMatch(item, keyword)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private boolean isKeywordMatch(Map<String, AttributeValue> item, String keyword) {
