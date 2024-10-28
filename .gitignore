@@ -8,3 +8,7 @@ backend/target
 amplify/.awscloudbackend
 amplify/backend/amplify-meta.json
 .DS_Store
+custom-nlp/src/__pycache__/*
+custom-nlp/aws-cli-commands.txt
+resources/*
+custom-nlp/.idea/*

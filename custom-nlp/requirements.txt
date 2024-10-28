@@ -1,0 +1,6 @@
+Flask
+spacy
+scikit-learn
+nltk
+serverless-wsgi
+pandas
