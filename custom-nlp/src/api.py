@@ -1,10 +1,12 @@
+# api.py
+
 from flask import Flask, request, jsonify
 from src.intent_model import load_model
 from src.keyword_extraction import extract_keyword
 from src.preprocess import preprocess_text
 
-# Load the model only once when the app is initialized
-model = load_model('model/intent_model.pkl')
+# Load the model once when the app is initialized
+model = load_model()  # No path argument
 
 
 def create_app():
@@ -20,7 +22,7 @@ def create_app():
         keywords = extract_keyword(text)
 
         response = {
-            "intent" : predicted_intent,
+            "intent": predicted_intent,
             "confidence": round(confidence_score, 2),
             "keywords": keywords
         }
@@ -28,4 +30,3 @@ def create_app():
         return jsonify(response)
 
     return app
-

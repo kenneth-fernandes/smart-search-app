@@ -12,3 +12,5 @@ custom-nlp/src/__pycache__/*
 custom-nlp/aws-cli-commands.txt
 resources/*
 custom-nlp/.idea/*
+custom-nlp/.vscode/*
+custom-nlp/venv/

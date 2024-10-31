@@ -1,0 +1,29 @@
+# Dockerfile.dependencies
+
+# Use a slim Python 3.11 base image
+FROM python:3.11-slim
+
+WORKDIR /dependencies
+
+# Install system libraries required for some Python packages
+RUN apt-get update && apt-get install -y \
+    gcc \
+    g++ \
+    build-essential \
+    libffi-dev \
+    libssl-dev \
+    libxml2-dev \
+    libxslt1-dev \
+    zlib1g-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy and install Python dependencies from requirements.txt
+COPY ../requirements.txt .
+RUN pip install --no-cache-dir -U pip && \
+    pip install --no-cache-dir -r requirements.txt
+
+# Install Spacy language model separately
+RUN python -m spacy download en_core_web_sm
+
+# Output directory for dependencies layer
+CMD ["echo", "Dependencies image built"]

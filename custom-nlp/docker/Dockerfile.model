@@ -1,0 +1,12 @@
+# Dockerfile.model
+
+# Use the dependencies image as the base
+FROM dependencies:latest
+
+WORKDIR /model
+
+# Copy the trained model into the model directory
+COPY ../model/intent_model.pkl /model/intent_model.pkl
+
+# Output directory for model layer
+CMD ["echo", "Model image built"]

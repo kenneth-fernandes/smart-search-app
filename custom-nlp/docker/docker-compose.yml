@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  dependencies:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.dependencies
+    image: dependencies:latest
+    volumes:
+      - model-data:/model
+    command: ["sleep", "infinity"]
+
+  model:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.model
+    image: model:latest
+    depends_on:
+      - dependencies
+    volumes:
+      - model-data:/model
+    command: ["sleep", "infinity"]
+
+  app:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.app
+    image: app:latest
+    depends_on:
+      - dependencies
+      - model
+    ports:
+      - "8080:8080"
+    environment:
+      - MODEL_PATH=/model/intent_model.pkl
+    volumes:
+      - model-data:/model
+
+volumes:
+  model-data:

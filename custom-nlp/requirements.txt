@@ -1,6 +1,7 @@
 Flask
 spacy
+pydantic
 scikit-learn
 nltk
-serverless-wsgi
 pandas
+serverless-wsgi
