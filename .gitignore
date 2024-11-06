@@ -14,3 +14,34 @@ resources/*
 custom-nlp/.idea/*
 custom-nlp/.vscode/*
 custom-nlp/venv/
+
+
+### React
+# dependencies
+frontend/smart-search-app/node_modules
+frontend/smart-search-app/.pnp
+frontend/smart-search-app/.pnp.js
+
+# testing
+frontend/smart-search-app/coverage
+
+# production
+frontend/smart-search-app/build
+
+# misc
+frontend/smart-search-app/.DS_Store
+frontend/smart-search-app/.env.local
+frontend/smart-search-app/.env.development.local
+frontend/smart-search-app/.env.test.local
+.frontend/smart-search-app/env.production.local
+
+frontend/smart-search-app/npm-debug.log*
+frontend/smart-search-app/yarn-debug.log*
+frontend/smart-search-app/yarn-error.log*
+frontend/smart-search-app/.gitignore
+
+# public - folder
+frontend/smart-search-app/public/logo192.png
+frontend/smart-search-app/public/logo512.png
+frontend/smart-search-app/public/manifest.json
+frontend/smart-search-app/public/robots.txt
